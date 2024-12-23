@@ -1,7 +1,6 @@
 on:
   pull_request:
-#  pull_request_review:
-#    types: [submitted, dismissed]
+  pull_request_review:
 
 jobs:
   auto-merge:
