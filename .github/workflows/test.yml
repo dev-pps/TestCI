@@ -18,3 +18,6 @@ jobs:
           git config --global user.name "Your Name"
           git commit --allow-empty -S -m "Trigger workflow"
           git push
+          gh api \
+          -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
