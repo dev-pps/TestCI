@@ -1,24 +1,28 @@
-name: commit
+
+name: Fetch Commits
+
 on:
   push:
   workflow_dispatch:
 
 jobs:
-  import:
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
+  fetch_commits:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4.2.2
-      - env:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install GitHub CLI
+        run: sudo apt-get update && sudo apt-get install -y gh
+
+      - name: Authenticate GitHub CLI
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+      - name: Fetch Commits using GitHub CLI
         run: |
-#          git config --global user.email "you@example.com"
-#          git config --global user.name "Your Name"
-#          git commit --allow-empty -m "Trigger workflow"
-#          git push
-          gh api \
-          -H "Accept: application/vnd.github+json" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
+          gh api -H "Accept: application/vnd.github+json" \
+                 -H "X-GitHub-Api-Version: 2022-11-28" \
+                 /repos/OWNER/REPO/commits
