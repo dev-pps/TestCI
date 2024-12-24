@@ -16,5 +16,5 @@ jobs:
         run: |
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
-          git commit --allow-empty -m "Trigger workflow -S"
+          git commit --allow-empty -S -m "Trigger workflow"
           git push
