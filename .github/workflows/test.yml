@@ -5,15 +5,22 @@ on:
 
 jobs:
   import:
+    permissions:
+        contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-
-      - name: Build docker image
-        run: docker build --no-cache -t pygithub .
-
-      - name: Run example
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          docker run --rm \
-            --env INPUT_REPO_TOKEN=${{ secrets.GITHUB_TOKEN }} \
-            pygithub src/teast.py
+          git commit --allow-empty -m "Trigger workflow"
+          git push
+
+#      - name: Build docker image
+#        run: docker build --no-cache -t pygithub .
+#
+#      - name: Run example
+#        run: |
+#          docker run --rm \
+#            --env INPUT_REPO_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+#            pygithub src/teast.py
