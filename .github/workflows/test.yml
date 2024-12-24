@@ -16,14 +16,5 @@ jobs:
         run: |
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
-          git commit --allow-empty -m "Trigger workflow"
+          git commit --allow-empty -m "Trigger workflow -S"
           git push
-
-#      - name: Build docker image
-#        run: docker build --no-cache -t pygithub .
-#
-#      - name: Run example
-#        run: |
-#          docker run --rm \
-#            --env INPUT_REPO_TOKEN=${{ secrets.GITHUB_TOKEN }} \
-#            pygithub src/teast.py
