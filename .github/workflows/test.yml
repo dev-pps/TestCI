@@ -1,7 +1,6 @@
-name: Test workflow for example 01
-
+name: commit
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
   import:
