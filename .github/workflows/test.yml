@@ -1,6 +1,7 @@
-name: Verified Commit Workflow
+name: Vemmit Workflowrified Co
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
