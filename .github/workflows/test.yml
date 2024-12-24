@@ -16,7 +16,7 @@ jobs:
         run: |
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
-          git commit --allow-empty -S -m "Trigger workflow"
+          git commit --allow-empty -m "Trigger workflow"
           git push
           gh api \
           -H "Accept: application/vnd.github+json" \
